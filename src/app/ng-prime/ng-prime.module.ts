@@ -4,8 +4,9 @@ import { CommonModule } from '@angular/common';
 import {DropdownModule} from 'primeng/dropdown';
 import {MultiSelectModule} from 'primeng/multiselect';
 import {TableModule} from 'primeng/table';
+import { ButtonModule } from 'primeng/button';
 
-
+import {ImageModule} from 'primeng/image';
 
 @NgModule({
   declarations: [],
@@ -13,12 +14,17 @@ import {TableModule} from 'primeng/table';
     CommonModule,
     DropdownModule,
     MultiSelectModule,
-    TableModule
+    TableModule,
+    ButtonModule,
+    ImageModule
   ],
   exports: [
+    CommonModule,
     DropdownModule,
     MultiSelectModule,
-    TableModule
+    TableModule,
+    ButtonModule,
+    ImageModule
   ]
 })
 export class NgPrimeModule { }

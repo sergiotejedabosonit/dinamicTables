@@ -1,1 +1,93 @@
-/* You can add global styles to this file, and also import other style files */
+.type{
+  font-weight: bold;
+  padding: 7px 25px ;
+  width: fit-content;
+  border-radius: 20px;
+}
+.grass {
+  background-color: rgba(108, 212, 108, 0.725);
+  border: 1px solid green;
+}
+.poison {
+  background-color: rgba(193, 66, 224, 0.725);
+  border: 1px solid rgb(87, 11, 81);
+}
+
+.fire {
+  background-color: rgba(251, 118, 98, 0.725);
+  border: 1px solid darkred;
+}
+
+.water {
+  background-color: rgba(82, 169, 219, 0.725);
+  border: 1px solid rgb(51, 0, 128);
+}
+
+.bug {
+  background-color: rgba(227, 164, 81, 0.725);
+  border: 1px solid rgb(110, 56, 15);
+}
+
+.flying {
+  background-color: rgba(157, 255, 255, 0.725);
+  border: 1px solid rgb(27, 101, 105)
+}
+
+.normal {
+  background-color: rgba(196, 197, 197, 0.725);
+  border: 1px solid rgb(73, 74, 74);
+}
+
+.electric {
+  background-color: rgba(248, 255, 148, 0.725);
+  border: 1px solid rgb(193, 187, 18);
+}
+
+.rock {
+  background-color: rgba(129, 129, 127, 0.725);
+  border: 1px solid rgb(13, 13, 13);
+}
+
+.psychic {
+  background-color: rgba(239, 180, 250, 0.725);
+  border: 1px solid rgb(95, 68, 113);
+}
+.dragon {
+  background-color: rgba(248, 56, 56, 0.725);
+  border: 1px solid rgb(150, 2, 2);
+}
+
+.ice {
+  background-color: rgba(255, 255, 255, 0.725);
+  border: 1px solid rgb(165, 149, 245);
+}
+
+.ground {
+  color: white;
+  background-color: rgba(48, 48, 48, 0.725);
+  border: 1px solid rgb(12, 12, 12);
+}
+
+.fairy {
+ 
+  background-color: rgba(238, 9, 254, 0.725);
+  border: 1px solid rgb(93, 10, 89);
+}
+
+.dark {
+ color: white;
+  background-color: rgba(20, 8, 150, 0.725);
+  border: 1px solid rgba(7, 3, 24);
+}
+
+.fighting {
+  color: white;
+   background-color: rgba(76, 8, 8, 0.725);
+   border: 1px solid rgb(15, 14, 14);
+ }
+
+ .ghost {
+   
+   background-color: rgba(235, 235, 235, 0.725);
+   border: 1px solid rgb(80, 16, 95);
+ }

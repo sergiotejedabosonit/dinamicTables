@@ -21,14 +21,14 @@ export class PokeService {
   ) { }
 
   getAllPokemons(){
-    this.http.get('https://pokeapi.co/api/v2/pokemon?limit=20').subscribe((resp: any) => { 
+    return this.http.get('https://pokeapi.co/api/v2/pokemon?limit=1500').subscribe((resp: any) => { 
     resp.results.forEach((element: any) => this.getInfoPokemon(element.url)); 
-    this._allPokemon.next(this.allPokemon)
+    
   }) }
 
 
   getInfoPokemon(url: string){
-    this.http.get(url).subscribe((resp: any) => {this.allPokemon.push(resp) })
+    this.http.get(url).subscribe((resp: any) => {this.allPokemon.push(resp); if(this.allPokemon.length === 1071){this._allPokemon.next(this.allPokemon)} })
   }
 
 }

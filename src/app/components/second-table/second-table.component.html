@@ -1,0 +1,35 @@
+<ng-container *ngIf="!loading; else elseTemplate">
+    Cargando...
+</ng-container>
+<ng-template #elseTemplate>
+    <div class="card">
+        
+        <p-table #table [value]="pokemons" [paginator]="true" [rows]="rows" [showCurrentPageReport]="true"
+            [(first)]="first" responsiveLayout="scroll"
+            currentPageReportTemplate="Showing {first} to {rows} of {{pokemons.length}} entries"
+            [rowsPerPageOptions]="[5,10,20]">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="name">Name<p-sortIcon field="name"></p-sortIcon></th>
+                    <th pSortableColumn="ability">Abilities </th>
+                    <th pSortableColumn="type">Types </th>
+                    <th pSortableColumn="base_experience">Base Experience<p-sortIcon field="base_experience"></p-sortIcon></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-pokemon>
+                <tr>
+                    <td class="d-flex flex-row  align-items-center">
+                        <p-image src="{{pokemon.sprites.other.home?.['front_default']}}" alt="Image" width="125"></p-image>
+                       
+                        <h5>{{pokemon.name | titlecase}}</h5></td>
+                    <td><p *ngFor="let ability of pokemon.abilities">{{ability.ability.name}}</p></td>
+                    <td>
+                        <p *ngFor="let type of pokemon.types" class="type {{ type?.type?.name }}">
+                            {{ type?.type?.name | titlecase}}
+                        </p></td>
+                    <td>{{pokemon['base_experience']}}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</ng-template>
