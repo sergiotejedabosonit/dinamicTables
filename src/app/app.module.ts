@@ -6,8 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
  
 import { AppComponent } from './app.component';
 import { NgPrimeModule } from './ng-prime/ng-prime.module'; 
-
-
+ 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
@@ -15,11 +14,14 @@ import { SecondTableComponent } from './components/second-table/second-table.com
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import {PaginatorModule} from 'primeng/paginator';
+import { PokeInfoComponent } from './components/poke-info/poke-info.component';
+import { RouterModule } from '@angular/router';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent, 
-    SecondTableComponent
+    SecondTableComponent, PokeInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,9 @@ import {PaginatorModule} from 'primeng/paginator';
     HttpClientModule,
     FormsModule,
     PaginatorModule,
-    NgPrimeModule
+    NgPrimeModule,
+    AppRoutingModule,
+    RouterModule 
   ],
   exports: [
     NgPrimeModule

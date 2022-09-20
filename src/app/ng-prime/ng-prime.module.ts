@@ -5,9 +5,10 @@ import {DropdownModule} from 'primeng/dropdown';
 import {MultiSelectModule} from 'primeng/multiselect';
 import {TableModule} from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
 
 import {ImageModule} from 'primeng/image';
-
+import {InputTextModule} from 'primeng/inputtext';
 @NgModule({
   declarations: [],
   imports: [
@@ -16,7 +17,9 @@ import {ImageModule} from 'primeng/image';
     MultiSelectModule,
     TableModule,
     ButtonModule,
-    ImageModule
+    ImageModule,
+    ProgressSpinnerModule,
+    InputTextModule
   ],
   exports: [
     CommonModule,
@@ -24,7 +27,9 @@ import {ImageModule} from 'primeng/image';
     MultiSelectModule,
     TableModule,
     ButtonModule,
-    ImageModule
+    ImageModule,
+    ProgressSpinnerModule,
+    InputTextModule
   ]
 })
 export class NgPrimeModule { }

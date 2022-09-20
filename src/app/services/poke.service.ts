@@ -31,4 +31,14 @@ export class PokeService {
     this.http.get(url).subscribe((resp: any) => {this.allPokemon.push(resp); if(this.allPokemon.length === 1071){this._allPokemon.next(this.allPokemon)} })
   }
 
+
+  getPokemonById(num: any){
+    return this.http.get(`https://pokeapi.co/api/v2/pokemon/${num}`)
+  }
+  getLocationById(num: any){
+    return this.http.get(`https://pokeapi.co/api/v2/pokemon/${num}/encounters`)
+  }
+  getSpeciesByPokemon(url: any){
+    return this.http.get(url)
+  }
 }

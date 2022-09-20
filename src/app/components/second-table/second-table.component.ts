@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Table } from 'primeng/table';
 import { PokeService } from '../../services/poke.service';
 
@@ -8,6 +8,8 @@ import { PokeService } from '../../services/poke.service';
   styleUrls: ['./second-table.component.css']
 })
 export class SecondTableComponent implements OnInit {
+
+  @ViewChild('table') table: Table | undefined;
 
   constructor(
     private ps: PokeService
@@ -29,24 +31,33 @@ export class SecondTableComponent implements OnInit {
 
  
   
-  next() {
-      this.first = this.first + this.rows;
-  }
+  // next() {
+  //     this.first = this.first + this.rows;
+  // }
 
-  prev() {
-      this.first = this.first - this.rows;
-  }
+  // prev() {
+  //     this.first = this.first - this.rows;
+  // }
 
-  reset() {
-      this.first = 0;
-  }
+  // reset() {
+  //     this.first = 0;
+  // }
 
-  isLastPage(): boolean {
-      return this.pokemons ? this.first === (this.pokemons.length - this.rows): true;
-  }
+  // isLastPage(): boolean {
+  //     return this.pokemons ? this.first === (this.pokemons.length - this.rows): true;
+  // }
 
-  isFirstPage(): boolean {
-      return this.pokemons ? this.first === 0 : true;
-  }
+  // isFirstPage(): boolean {
+  //     return this.pokemons ? this.first === 0 : true;
+  // }
 
+  clear(table: Table) {
+    table.clear();
+}
+
+ 
+
+getEventValue($event:any) :string {
+  return $event.target.value;
+} 
 }

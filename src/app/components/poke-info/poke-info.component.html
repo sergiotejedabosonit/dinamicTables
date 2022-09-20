@@ -1,0 +1,113 @@
+<ng-container *ngIf="!info || !specie || !locations; else elseTemplate">
+    Cargando...
+</ng-container>
+<ng-template #elseTemplate>
+
+    <div class="row">
+        <div class="col-4">
+            <div class="row">
+                <img src="{{info.sprites.other['official-artwork']['front_default'] }}" />
+            </div>
+            <div class="row">
+                <h5>Name:</h5>
+                <h3>{{info.name | titlecase}}</h3>
+                <hr>
+                <h5>Habitat:</h5>
+                <p>{{specie.habitat.name | titlecase}}</p>
+                <hr>
+                <h5>Types:</h5>
+                <ul>
+                    <li *ngFor="let types of info.types">{{types.type.name | titlecase}}</li>
+                </ul>
+                <hr>
+                <h5>Abilities:</h5>
+                <ul>
+                    <li *ngFor="let ability of info.abilities">{{ability.ability.name | titlecase}}</li>
+                </ul>
+                <hr>
+                <table>
+                    <tr>
+                        <th> Height</th>
+                        <th>Weight</th>
+                    </tr>
+                    <tr>
+                        <td>{{info.height}}</td>
+                        <td>{{info.weight}}</td>
+                    </tr>
+                </table>
+                <hr>
+                <table>
+                    <tr>
+                        <th>
+                            Baby
+                        </th>
+                        <th>Legendary</th>
+                        <th>Mythical</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            {{specie['is_baby'] === true ? 'YES' : 'NO'}}
+                        </td>
+                        <td>
+                            {{specie['is_legendary'] === true ? 'YES' : 'NO'}}
+                        </td>
+                        <td>
+                            {{specie['is_mythical'] === true ? 'YES' : 'NO'}}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="col-4" *ngIf="info.moves.length > 0">
+            <h5>Moves:</h5>
+            <div class="row">
+                <div class="col-6"></div>
+                <div class="col-6"></div>
+            </div>
+            <ul>
+                <li *ngFor="let move of info.moves, let i=index">
+
+                    {{ move.move.name }}
+
+                </li>
+            </ul>
+
+        </div>
+        <div class="col-4">
+            <div class="row" *ngIf="locations.length > 0">
+                <h5>Locations:
+                </h5>
+                <div>
+                    <table>
+                        <tr>
+                            <th> Location name</th>
+                            <th> Version:</th>
+                            <th>Possibilities (max):</th>
+                        </tr>
+                        <tr *ngFor="let location of locations">
+                            <td>
+                                {{location['location_area'].name | titlecase}}
+                            </td>
+                            <td>
+                                <p *ngFor="let details of location['version_details']">{{details.version.name}}</p>
+                            </td>
+                            <td>
+                                <p *ngFor="let details of location['version_details']">{{details['max_chance']}}</p>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <hr>
+    <div class="row" *ngIf="specie">
+        <div class="col">
+
+        </div>
+    </div>
+
+</ng-template>

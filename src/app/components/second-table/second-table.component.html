@@ -1,33 +1,72 @@
 <ng-container *ngIf="!loading; else elseTemplate">
-    Cargando...
+    <div class="container_spinner">
+        <p-progressSpinner [style]="{width: '300px', height: '300px'}" styleClass="custom-spinner" strokeWidth="8"
+            fill="var(--surface-ground)" animationDuration=".5s"></p-progressSpinner>
+    </div>
+
 </ng-container>
 <ng-template #elseTemplate>
     <div class="card">
-        
+
         <p-table #table [value]="pokemons" [paginator]="true" [rows]="rows" [showCurrentPageReport]="true"
             [(first)]="first" responsiveLayout="scroll"
-            currentPageReportTemplate="Showing {first} to {rows} of {{pokemons.length}} entries"
-            [rowsPerPageOptions]="[5,10,20]">
+            currentPageReportTemplate="Showing {first} to {last} of {{pokemons.length}} entries"
+            [rowsPerPageOptions]="[5,10,20]"
+            [globalFilterFields]="['name' ]">
+            <ng-template pTemplate="caption">
+                <div class="d-flex justify-content-between">
+                    <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash"
+                        (click)="clear(table)"></button>
+                    <span class="p-input-icon-left ml-auto">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" class="float-end"  (input)="table.filterGlobal(getEventValue($event), 'contains')"
+                            placeholder="Search Pokemon by Name" width="300" />
+                    </span>
+                </div>
+            </ng-template>
             <ng-template pTemplate="header">
                 <tr>
-                    <th pSortableColumn="name">Name<p-sortIcon field="name"></p-sortIcon></th>
+                    <th pSortableColumn="id">Id<p-sortIcon field="id"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="name">Name<p-sortIcon field="name"></p-sortIcon>
+                    </th>
                     <th pSortableColumn="ability">Abilities </th>
                     <th pSortableColumn="type">Types </th>
-                    <th pSortableColumn="base_experience">Base Experience<p-sortIcon field="base_experience"></p-sortIcon></th>
+                    <th pSortableColumn="base_experience">Base Experience<p-sortIcon field="base_experience">
+                        </p-sortIcon>
+                    </th>
+                    <th>
+                        +Info
+                    </th>
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-pokemon>
-                <tr>
-                    <td class="d-flex flex-row  align-items-center">
-                        <p-image src="{{pokemon.sprites.other.home?.['front_default']}}" alt="Image" width="125"></p-image>
-                       
-                        <h5>{{pokemon.name | titlecase}}</h5></td>
-                    <td><p *ngFor="let ability of pokemon.abilities">{{ability.ability.name}}</p></td>
+
+                <tr class="table_row">
+                    <td class="table_row">
+                        <p>Nº {{pokemon.id}}</p>
+                    </td>
+                    <td class="d-flex flex-row  align-items-center table_row">
+                        <p-image src="{{pokemon.sprites.other.home?.['front_default']}}" alt="Image" width="100">
+                        </p-image>
+
+                        <h5>{{pokemon.name | titlecase}}</h5>
+                    </td>
+                    <td>
+                        <p *ngFor="let ability of pokemon.abilities">{{ability.ability.name | titlecase}}</p>
+                    </td>
                     <td>
                         <p *ngFor="let type of pokemon.types" class="type {{ type?.type?.name }}">
                             {{ type?.type?.name | titlecase}}
-                        </p></td>
+                        </p>
+                    </td>
                     <td>{{pokemon['base_experience']}}</td>
+                    <td>
+                        <button pButton pRipple type="button" label="Link" class="p-button-raised p-button-warning"
+                        [routerLink]="[ 'pokemon', pokemon.id ]"
+                        routerLinkActive="active"
+                        ></button>
+                    </td>
                 </tr>
             </ng-template>
         </p-table>
