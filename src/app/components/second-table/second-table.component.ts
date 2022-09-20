@@ -13,12 +13,16 @@ export class SecondTableComponent implements OnInit {
 
   constructor(
     private ps: PokeService
-  ) { }
+  ) {
+    console.log(this.pokemons.length)
+    if(this.pokemons.length > 1000){return} else {}
+    this.ps.allPokemon$.subscribe(resp =>{console.log(resp); this.pokemons = resp; if(resp.length !== 0){this.loading = true} })
+    this.ps.getAllPokemons()
+    
+   }
 
   ngOnInit(): void {
-    this.ps.getAllPokemons()
-    this.ps.allPokemon$.subscribe(resp =>{console.log(resp); this.pokemons = resp; if(resp.length !== 0){this.loading = true} })
-    
+   
   }
 
   pokemons: any[] = [];
