@@ -9,6 +9,8 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
 
 import {ImageModule} from 'primeng/image';
 import {InputTextModule} from 'primeng/inputtext';
+import {ScrollerModule} from 'primeng/scroller';
+
 @NgModule({
   declarations: [],
   imports: [
@@ -19,7 +21,8 @@ import {InputTextModule} from 'primeng/inputtext';
     ButtonModule,
     ImageModule,
     ProgressSpinnerModule,
-    InputTextModule
+    InputTextModule,
+    ScrollerModule
   ],
   exports: [
     CommonModule,
@@ -29,7 +32,8 @@ import {InputTextModule} from 'primeng/inputtext';
     ButtonModule,
     ImageModule,
     ProgressSpinnerModule,
-    InputTextModule
+    InputTextModule,
+    ScrollerModule
   ]
 })
 export class NgPrimeModule { }
